@@ -128,26 +128,18 @@ body {
   justify-content: center;
 }
 
+.todo.completed label {
+text-decoration: line-through;
+}
+
 .md-checkbox {
   border: 1px;
   border-color: grey;
   z-index: 999;
+  visibility: visible;
 }
 
-  .todo.completed label {
-    text-decoration: line-through;
-  }
 
-  .md-checkbox .md-checkbox-container {
-  border: 0.7px solid #a37c82;
-  margin-left: 12px;
-}
-.md-checkbox.md-checked .md-checkbox-container:after {
-  border-color: #a37c82;
-}
-.md-checkbox.md-theme-default {
-  background: transparent;
-}
 
 
 
