@@ -22,6 +22,7 @@
       >
         <md-checkbox
           v-model="boolean"
+
           value="todo.completed"
           @change="completeTodo(todo)"
         >
@@ -122,13 +123,33 @@ body {
 }
 
 .todos {
-display: flex;
-flex-direction: column;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .md-checkbox {
-    display: flex;
+  border: 1px;
+  border-color: grey;
+  z-index: 999;
+}
+
+  .todo.completed label {
+    text-decoration: line-through;
   }
+
+  .md-checkbox .md-checkbox-container {
+  border: 0.7px solid #a37c82;
+  margin-left: 12px;
+}
+.md-checkbox.md-checked .md-checkbox-container:after {
+  border-color: #a37c82;
+}
+.md-checkbox.md-theme-default {
+  background: transparent;
+}
+
+
+
 
 </style>
