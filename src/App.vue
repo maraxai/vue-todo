@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title">Your to-do list:</h1>
-    <md-field class="addToList">
+    <md-field class="clearList">
       <md-button @click="addTodo()" class="md-icon-button addItem">
         <md-icon>add</md-icon>
       </md-button>
@@ -11,7 +11,7 @@
         @keyup.enter="addTodo()"
         placeholder="to-do..."
       ></md-input>
-    </md-field class="clearList">
+    </md-field>
     <md-list class="todos">
       <md-list-item
         v-for="(todo, index) in todos"
@@ -20,9 +20,8 @@
         class="todo"
         :class="{completed: todo.completed}"
       >
-        <md-checkbox
-          v-model="boolean"
-
+        <md-checkbox class="checkbox"
+          v-model="todo.completed"
           value="todo.completed"
           @change="completeTodo(todo)"
         >
@@ -129,19 +128,23 @@ body {
 }
 
 .todo.completed label {
-text-decoration: line-through;
-}
-
-.md-checkbox {
-  border: 1px;
-  border-color: grey;
-  z-index: 999;
-  visibility: visible;
+  text-decoration: line-through;
 }
 
 
-
-
-
+.md-checkbox,
+.md-checkbox-container,
+.md-list-item-content > .md-checkbox:first-child {
+  margin: 0px;
+  padding: 0px;
+}
+.md-checkbox .md-checkbox-container {
+background-color: white;
+  border: 0.7px solid #a37c82;
+  margin-left: 12px;
+}
+.md-checkbox.md-checked .md-checkbox-container:after {
+  border-color: #a37c82;
+}
 
 </style>
