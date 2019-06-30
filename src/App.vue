@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 class="title">Your to-do list:</h1>
-    <md-field class="clearList">
+    <h1 class="title">ToDo or Not ToDo!</h1>
+    <md-field class="addToDo">
       <md-button @click="addTodo()" class="md-icon-button addItem">
         <md-icon>add</md-icon>
       </md-button>
@@ -105,7 +105,14 @@ export default {
 <style>
 body {
   padding: 20px;
-  background-color: #c9c9c9;
+  background-color: #cbcdd1;
+  color: #232654;
+}
+
+.title {
+font-family: 'Chango';
+  display: flex;
+  justify-content: center;
 }
 
 .remove {
@@ -113,12 +120,16 @@ body {
   padding: 0.25em;
 }
 
-.addToList {
+.addToDo {
   background-color: white;
+  border-radius: 0.5em;
 }
 
 .clearList {
   background-color: white;
+  border-radius: 0.5em;
+  background-color: #edeef2;
+
 }
 
 .todos {
@@ -131,20 +142,13 @@ body {
   text-decoration: line-through;
 }
 
-
-.md-checkbox,
-.md-checkbox-container,
-.md-list-item-content > .md-checkbox:first-child {
-  margin: 0px;
-  padding: 0px;
-}
 .md-checkbox .md-checkbox-container {
 background-color: white;
-  border: 0.7px solid #a37c82;
   margin-left: 12px;
 }
+
 .md-checkbox.md-checked .md-checkbox-container:after {
-  border-color: #a37c82;
+  border-color: #0e1252;
 }
 
 </style>
