@@ -25,6 +25,7 @@
           value="todo.completed"
           @change="completeTodo(todo)"
         >
+        </md-checkbox>
           <label v-if="!todo.edit">{{ todo.label }}</label>
           <input
             class="edit"
@@ -35,10 +36,7 @@
             @blur="doneEdit(index)"
             @keyup.enter="doneEdit(index)"
           >
-        </md-checkbox>
         <md-button class="remove" @click="removeTodo(todo)">remove</md-button>
-        <br>
-        <br>
       </md-list-item>
     </md-list>
     <footer v-show="todos.length > 0" class="clearList">
