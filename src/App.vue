@@ -47,108 +47,106 @@
 </template>
 
 <script>
-const focus = {
-  inserted(el) {
-    el.focus();
-  }
-};
-export default {
-  data() {
-    return {
-      todos: [],
-      currentTodo: ""
-    };
-  },
-  directives: { focus },
-  methods: {
-    addTodo() {
-      if (this.currentTodo !== "") {
-        this.todos.push({
-          id: this.todos.length,
-          label: this.currentTodo,
-          completed: false,
-          edit: false
+  const focus = {
+    inserted(el) {
+      el.focus();
+    }
+  };
+  export default {
+    data() {
+      return {
+        todos: [],
+        currentTodo: ""
+      };
+    },
+    directives: { focus },
+    methods: {
+      addTodo() {
+        if (this.currentTodo !== "") {
+          this.todos.push({
+            id: this.todos.length,
+            label: this.currentTodo,
+            completed: false,
+            edit: false
+          });
+        }
+        this.currentTodo = "";
+      },
+      completeTodo(todo) {
+        if (todo.completed === true) {
+          todo.completed = false;
+        }
+        if (todo.completed === false) {
+          todo.completed = true;
+        }
+      },
+      editTodo(index) {
+        this.todos[index].edit = true;
+      },
+      doneEdit(index) {
+        this.todos[index].edit = false;
+      },
+      removeTodo(todo) {
+        var index = this.todos.indexOf(todo);
+        this.todos.splice(index, 1);
+      },
+      removeAll() {
+        this.todos = [];
+      },
+      removeCompleted() {
+        this.todos = this.todos.filter(function(todo) {
+          return !todo.completed;
         });
       }
-      this.currentTodo = "";
-    },
-    completeTodo(todo) {
-      if (todo.completed === true) {
-        todo.completed = false;
-      }
-      if (todo.completed === false) {
-        todo.completed = true;
-      }
-    },
-    editTodo(index) {
-      this.todos[index].edit = true;
-    },
-    doneEdit(index) {
-      this.todos[index].edit = false;
-    },
-    removeTodo(todo) {
-      var index = this.todos.indexOf(todo);
-      this.todos.splice(index, 1);
-    },
-    removeAll() {
-      this.todos = [];
-    },
-    removeCompleted() {
-      this.todos = this.todos.filter(function(todo) {
-        return !todo.completed;
-      });
     }
-  }
 };
 </script>
 
 <style>
-body {
-  padding: 20px;
-  background-color: #cbcdd1;
-  color: #232654;
-}
+  body {
+    padding: 20px;
+    background-color: #cbcdd1;
+    color: #232654;
+  }
 
-.title {
-font-family: 'Chango';
-  display: flex;
-  justify-content: center;
-}
+  .title {
+  font-family: 'Chango';
+    display: flex;
+    justify-content: center;
+  }
 
-.remove {
+  .remove {
+    background-color: white;
+    padding: 0.25em;
+  }
+
+  .addToDo {
+    background-color: white;
+    border-radius: 0.5em;
+  }
+
+  .clearList {
+    background-color: white;
+    border-radius: 0.5em;
+    background-color: #edeef2;
+  }
+
+  .todos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .todo.completed label {
+    text-decoration: line-through;
+  }
+
+  .md-checkbox .md-checkbox-container {
   background-color: white;
-  padding: 0.25em;
-}
+    margin-left: 12px;
+  }
 
-.addToDo {
-  background-color: white;
-  border-radius: 0.5em;
-}
-
-.clearList {
-  background-color: white;
-  border-radius: 0.5em;
-  background-color: #edeef2;
-
-}
-
-.todos {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.todo.completed label {
-  text-decoration: line-through;
-}
-
-.md-checkbox .md-checkbox-container {
-background-color: white;
-  margin-left: 12px;
-}
-
-.md-checkbox.md-checked .md-checkbox-container:after {
-  border-color: #0e1252;
-}
-
+  .md-checkbox.md-checked .md-checkbox-container:after {
+    border-color: #0e1252;
+  }
 </style>
